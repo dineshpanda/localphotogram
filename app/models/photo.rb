@@ -31,6 +31,7 @@ class Photo < ApplicationRecord
              dependent: :destroy
 
   belongs_to :owner,
+             optional: true,
              class_name: "User",
              counter_cache: true
 
