@@ -53,6 +53,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :recent_owner_first_name_cont, "User first_name contains" %>
+    <%= f.text_field :recent_owner_first_name_cont, :class => "form-control", :placeholder => "User first_name contains" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :comments_body_cont, "Comment body contains" %>
     <%= f.text_field :comments_body_cont, :class => "form-control", :placeholder => "Comment body contains" %>
   </div>

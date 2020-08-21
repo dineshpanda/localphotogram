@@ -6,6 +6,8 @@ RSpec.describe Photo, type: :model do
 
     it { should have_many(:likes) }
 
+    it { should belong_to(:recent_owner) }
+
     it { should belong_to(:owner) }
   end
 

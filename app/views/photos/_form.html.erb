@@ -68,5 +68,27 @@
     <% end %>
   </div>
   <%= f.hidden_field :owner_id, value: current_user.id %>
+  <div class="form-group">
+    <% status_class = "form-control" %>
+    <% status_was_invalid = photo.errors.include?(:status) %>
+
+    <% if was_validated %>
+      <% if status_was_invalid %>
+        <% status_class << " is-invalid" %>
+      <% else %>
+        <% status_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :status %>
+    <%= f.select :status, options_for_select(Photo.statuses.keys), {}, class: "form-control" %>
+    <% if status_was_invalid %>
+      <% photo.errors.full_messages_for(:status).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

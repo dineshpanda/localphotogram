@@ -1,4 +1,6 @@
 class FriendRequest < ApplicationRecord
+  enum status: { "accepted" => 0, "pending" => 1 }
+
   # Direct associations
 
   belongs_to :accepted_sender,
@@ -30,7 +32,7 @@ class FriendRequest < ApplicationRecord
 
   # Scopes
 
-  scope :accepted, -> { where(status: "accepted") }
+  scope :first_scope, -> { where("friend_requests.updated_at >= :query", query: "2020-08-01T12:00:00+00:00") }
 
   def to_s
     sender.to_s
