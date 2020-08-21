@@ -19,6 +19,7 @@ class User < ApplicationRecord
              dependent: :destroy
 
   has_many   :received_friend_requests,
+             -> { not_pending },
              class_name: "FriendRequest",
              foreign_key: "recipient_id",
              dependent: :destroy
