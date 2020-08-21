@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe "Direct Associations" do
+    it { should have_many(:recent_photos) }
+
     it { should have_many(:accepted_sent_friend_requests) }
 
     it { should have_many(:received_friend_requests) }

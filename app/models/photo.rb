@@ -21,6 +21,8 @@ class Photo < ApplicationRecord
   end
   mount_uploader :image, ImageUploader
 
+  enum status: { "recent" => 0, "old" => 1 }
+
   # Direct associations
 
   has_many   :comments,
@@ -29,6 +31,10 @@ class Photo < ApplicationRecord
   has_many   :likes,
              class_name: "Vote",
              dependent: :destroy
+
+  belongs_to :recent_owner,
+             class_name: "User",
+             foreign_key: "owner_id"
 
   belongs_to :owner,
              optional: true,

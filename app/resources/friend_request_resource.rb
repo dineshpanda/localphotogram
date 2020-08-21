@@ -4,7 +4,7 @@ class FriendRequestResource < ApplicationResource
   attribute :updated_at, :datetime, writable: false
   attribute :sender_id, :integer
   attribute :recipient_id, :integer
-  attribute :status, :string
+  attribute :status, :integer_enum, allow: FriendRequest.statuses.keys
 
   # Direct associations
 

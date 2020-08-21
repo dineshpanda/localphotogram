@@ -6,6 +6,7 @@ class PhotoResource < ApplicationResource
   attribute :image, :string
   attribute :location, :string
   attribute :owner_id, :integer
+  attribute :status, :integer_enum, allow: Photo.statuses.keys
 
   # Direct associations
 
@@ -13,6 +14,10 @@ class PhotoResource < ApplicationResource
 
   has_many   :likes,
              resource: VoteResource
+
+  belongs_to :recent_owner,
+             resource: UserResource,
+             foreign_key: :owner_id
 
   belongs_to :owner,
              resource: UserResource
