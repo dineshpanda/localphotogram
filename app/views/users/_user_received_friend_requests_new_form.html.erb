@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <%= f.label :status %>
-    <%= f.text_field :status, class: "form-control" %>
+    <%= f.select :status, options_for_select(FriendRequest.statuses.keys), {}, class: "form-control" %>
   </div>
 
   <%= f.submit "Create friend request", class: "btn btn-block btn-outline-secondary" %>
